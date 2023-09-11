@@ -14,7 +14,7 @@ const TypingBox = () => {
   };
 
   return (
-    <div className="flex items-center p-4 bg-slate-900 border-t">
+    <div className="flex items-center p-4 bg-slate-900 rounded-b-lg border-t">
       <input
         type="text"
         value={message}
