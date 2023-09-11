@@ -1,15 +1,39 @@
+import Message from "./Message";
+
 const ChatBox = () => {
-  
+  const messages = [
+    {
+      message:
+        "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+      username: "John Doe",
+      timestamp: "12:34:56",
+    },
+    {
+      message:
+        "lorem ipsum dolor srem ipsum dolor sit amet lorem ipsum dolor loremlaskdjalkjasldkjasdlkajsdlajdalsdjasldkj slkjasdkjadlkjasdlkajdlkasdlkasla sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+      username: "John Doe",
+      timestamp: "12:34:56",
+    },
+    {
+      message: "loremm ipsum dolor sit amet lorem ipsum dolor sit amet",
+      username: "John Doe",
+      timestamp: "12:34:56",
+    },
+  ];
 
   return (
     <div className="flex flex-col h-full  p-4 border border-gray-300 rounded bg-white">
-      {/* <div className="flex-1 overflow-y-auto">
-        {messages.map((message, index) => (
-          <div key={index} className="mb-2">
-            {message}
-          </div>
+      <div className="p-4 flex flex-col">
+        {messages.map((msg, index) => (
+          <Message
+            key={index}
+            message={msg.message}
+            username={msg.username}
+             timestamp={msg.timestamp}
+             justify={index % 2 === 0 ? "start" : "end"}
+          />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
