@@ -5,7 +5,7 @@ const Message = ({ message, username, timestamp, justify }) => {
         {message}
       </div>
       <div className="flex flex-col ml-2">
-        <span className="text-gray-600">{username}</span>
+        <span className="text-gray-600">{username} </span>
         <span className="text-sm text-gray-600">{timestamp}</span>
       </div>
     </div>

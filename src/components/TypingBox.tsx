@@ -1,4 +1,4 @@
-import { useState } from "react";
+import  { useState } from "react";
 
 const TypingBox = () => {
   const [message, setMessage] = useState("");
@@ -14,7 +14,7 @@ const TypingBox = () => {
   };
 
   return (
-    <div className="flex items-center p-4 border-t">
+    <div className="flex items-center p-4 bg-slate-900 border-t">
       <input
         type="text"
         value={message}
