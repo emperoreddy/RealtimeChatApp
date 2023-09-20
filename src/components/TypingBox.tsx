@@ -4,7 +4,6 @@ import { supabase, supabaseKey, supabaseUrl } from "../App";
 const TypingBox = () => {
   const [message, setMessage] = useState([]);
 
-
   const handleMessageChange = (e: any) => {
     setMessage(e.target.value);
   };
@@ -19,7 +18,11 @@ const TypingBox = () => {
     setMessage("");
   }
 
- 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
+  };
 
   return (
     <div className="flex items-center p-4 bg-slate-900 rounded-b-lg border-t">
@@ -27,11 +30,12 @@ const TypingBox = () => {
         type="text"
         value={message}
         onChange={handleMessageChange}
+        onKeyDown={handleKeyDown}
         placeholder="Type your message..."
         className="flex-1 px-4 py-2 rounded-lg bg-gray-100 focus:outline-none"
-      
       />
       <button
+        type="submit"
         onClick={handleSendMessage}
         className="ml-2 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none"
       >
