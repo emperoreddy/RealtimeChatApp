@@ -1,6 +1,7 @@
 import ChatLayout from './components/ChatLayout'
 import background from './assets/blob.webp'
 import './App.css'
+import UsernameSelect from './components/UsernameSelect';
 
 import { createClient } from "@supabase/supabase-js";
 
@@ -11,9 +12,11 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 function App() {
 
   return (
-  <div className="bg-blue-800 w-screen h-screen flex items-center justify-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${background})`}}>
-    <ChatLayout/>
-  </div>
+    <div className="bg-blue-800 w-screen h-screen flex items-center justify-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${background})` }}>
+      {/* <ChatLayout/> */}
+      <UsernameSelect />
+
+    </div>
   )
 }
 
