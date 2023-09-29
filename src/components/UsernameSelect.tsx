@@ -1,8 +1,9 @@
+
 export default function UsernameSelect() {
   return (
     <>
       <div className="flex  min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 text-gray-100">
-        <div className="bg-gray-800 bg-opacity-25 py-10 lg:mx-96 md:mx-36 rounded-lg">
+        <div className="bg-gray-800 bg-opacity-40 py-10 lg:mx-96 md:mx-36 rounded-lg">
           <div className=" sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto h-10 w-auto"
