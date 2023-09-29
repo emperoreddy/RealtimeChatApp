@@ -14,7 +14,8 @@ const TypingBox = () => {
       .insert([{ text: message, username: "John Doe" }])
       .select();
 
-    console.log("Message sent:", message);
+    console.log("Message sent:", message, data);
+    console.error(error);
     setMessage("");
   }
 

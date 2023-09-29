@@ -7,6 +7,7 @@ const ChatBox = () => {
   const newElementRef = useRef(null);
 
 
+
   useEffect(() => {
       if (newElementRef.current) {
         newElementRef.current.scrollIntoView({ behavior: "smooth" });
@@ -41,7 +42,7 @@ const ChatBox = () => {
             key={msg.id}
             message={msg.text}
             username={msg.username}
-            timestamp={msg.timestamp}
+            timestamp={msg.timestamp.substring(0, 5)}
             justify={msg.id % 2 === 0 ? "start" : "end"}
           />
         ))}
