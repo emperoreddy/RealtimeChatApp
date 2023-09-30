@@ -10,12 +10,13 @@ const ChatBox = () => {
   const username = useSelector(selectUsername);
   const storedUsername = localStorage.getItem("username");
 
-
   useEffect(() => {
-
     if (newElementRef.current) {
       newElementRef.current.scrollIntoView({ behavior: "smooth" });
     }
+  }, [messages]);
+
+  useEffect(() => {
     getMessages();
 
     const mySubscription = supabase
@@ -31,8 +32,12 @@ const ChatBox = () => {
   }, [messages]);
 
   async function getMessages() {
-    const { data }: any = await supabase.from("messages").select();
-    setMessages(data);
+    try {
+      const { data }: any = await supabase.from("messages").select();
+      setMessages(data);
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
   }
 
   return (
@@ -45,6 +50,9 @@ const ChatBox = () => {
             username={msg.username}
             timestamp={msg.timestamp.substring(0, 5)}
             justify={storedUsername === msg.username ? "end" : "start"}
+            color={
+              storedUsername === msg.username ? "bg-indigo-700" : "bg-slate-700"
+            }
           />
         ))}
         <li ref={newElementRef}></li>
