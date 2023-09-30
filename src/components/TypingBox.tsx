@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { supabase, supabaseKey, supabaseUrl } from "../App";
+import { useSelector } from "react-redux";
+import { selectUsername } from "../features/username/storeUsernameSlice";
 
 const TypingBox = () => {
   const [message, setMessage] = useState([]);
+  const username = useSelector(selectUsername);
+
+console.log(username);
 
   const handleMessageChange = (e: any) => {
     setMessage(e.target.value);
@@ -11,7 +16,7 @@ const TypingBox = () => {
   async function handleSendMessage() {
     const { data, error } = await supabase
       .from("messages")
-      .insert([{ text: message, username: "John Doe" }])
+      .insert([{ text: message, username: username}])
       .select();
 
     console.log("Message sent:", message, data);

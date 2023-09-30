@@ -5,6 +5,7 @@ import UsernameSelect from "./components/UsernameSelect";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { createClient } from "@supabase/supabase-js";
+import NotFound from "./components/NotFound";
 
 export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 export const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>404</div>,
+    element: <NotFound/>,
   }
 ]);
 
