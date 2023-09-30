@@ -13,6 +13,7 @@ let navigate = useNavigate();
 const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(storeUsername(username));
+    localStorage.setItem("username", username);
     navigate("/chat")
     console.log("Username submitted:", username);
 }

@@ -6,8 +6,7 @@ import { selectUsername } from "../features/username/storeUsernameSlice";
 const TypingBox = () => {
   const [message, setMessage] = useState([]);
   const username = useSelector(selectUsername);
-
-console.log(username);
+  const storedUsername = localStorage.getItem("username");
 
   const handleMessageChange = (e: any) => {
     setMessage(e.target.value);
@@ -16,7 +15,7 @@ console.log(username);
   async function handleSendMessage() {
     const { data, error } = await supabase
       .from("messages")
-      .insert([{ text: message, username: username}])
+      .insert([{ text: message, username: storedUsername }])
       .select();
 
     console.log("Message sent:", message, data);
