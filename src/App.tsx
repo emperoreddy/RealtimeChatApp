@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div
-      className="bg-blue-800 w-screen h-screen flex items-center justify-center bg-cover bg-no-repeat"
+      className="bg-blue-800  w-screen h-screen flex items-center justify-center bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${background})` }}
     >
       <RouterProvider router={router} />
