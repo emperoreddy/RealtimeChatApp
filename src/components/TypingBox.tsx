@@ -13,14 +13,22 @@ const TypingBox = () => {
   };
 
   async function handleSendMessage() {
-    const { data, error } = await supabase
-      .from("messages")
-      .insert([{ text: message, username: storedUsername }])
-      .select();
+    if (message.length == 0) {
+      console.error("Empty message");
+      return;
+    }
 
-    console.log("Message sent:", message, data);
-    console.error(error);
-    setMessage("");
+    try {
+      await supabase
+        .from("messages")
+        .insert([{ text: message, username: storedUsername }])
+        .select();
+
+      console.log("Message sent:", message);
+      setMessage("");
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const handleKeyDown = (e) => {
