@@ -45,7 +45,7 @@ const ChatBox = () => {
   }
 
   return (
-    <div className="flex flex-col h-full mt-20 overflow-y-auto scrollbar py-8  p-4 border border-none rounded bg-">
+    <div className="flex flex-col h-full mt-20 overflow-y-auto scrollbar py-8  p-4 border border-none rounded">
       <ul className="p-4 flex flex-col ">
         {messages.map((msg) => (
           <Message
