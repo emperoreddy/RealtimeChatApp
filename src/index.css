@@ -21,4 +21,8 @@
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #2b2456;
 }
+
+input, textarea {
+  -webkit-user-select: text;
+}
 }

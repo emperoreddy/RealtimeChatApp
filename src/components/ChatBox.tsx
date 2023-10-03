@@ -11,10 +11,14 @@ const ChatBox = () => {
   const storedUsername = localStorage.getItem("username");
 
   useEffect(() => {
-    if (newElementRef.current) {
-      newElementRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
+   const timer = setTimeout(() => {
+     if (newElementRef.current) {
+       newElementRef.current.scrollIntoView();
+     }
+   }, 1000);
+
+   return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     getMessages();
