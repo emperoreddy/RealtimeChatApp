@@ -38,14 +38,14 @@ const TypingBox = () => {
   };
 
   return (
-    <div className="flex items-center p-4 bg-slate-900 rounded-b-lg border-t z-10">
+    <div className="flex items-center p-4 bg-slate-900 rounded-b-lg border-t ">
       <input
         type="text"
         value={message}
         onChange={handleMessageChange}
         onKeyDown={handleKeyDown}
         placeholder="Type your message..."
-        className="flex-1 text-sm sm:text-base px-4 py-2 rounded-lg bg-gray-100 focus:outline-none"
+        className="flex-1 text-sm sm:text-base px-4 py-2 rounded-lg bg-gray-100 focus:outline-none "
       />
       <button
         type="submit"
