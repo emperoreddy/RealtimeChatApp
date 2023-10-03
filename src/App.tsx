@@ -1,5 +1,5 @@
 import ChatLayout from "./components/ChatLayout";
-import background from "./assets/blob.webp";
+import background from "./assets/blob1.jpg";
 import "./App.css";
 import UsernameSelect from "./components/UsernameSelect";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

@@ -45,10 +45,7 @@ const TypingBox = () => {
         onChange={handleMessageChange}
         onKeyDown={handleKeyDown}
         placeholder="Type your message..."
-        onTouchStart="this.removeAttribute('readonly');"
-        onfocus="this.removeAttribute('readonly');"
         className="flex-1 text-sm sm:text-base px-4 py-2 rounded-lg bg-gray-100 focus:outline-none"
-        readOnly
       />
       <button
         type="submit"
