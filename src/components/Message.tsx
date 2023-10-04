@@ -4,7 +4,7 @@ const Message = ({ message, username, timestamp, justify, color }) => {
 
 
     <div className={`flex mb-10 justify-${justify}`}>
-      <div className={`${color}  text-white px-4 py-2 rounded-l-lg rounded-br-2xl max-w-[29rem]`}>
+      <div className={`${color}  text-white px-4 py-2 rounded-l-lg rounded-br-2xl max-w-[29rem] break-words`}>
         {message}
       </div>
       <div className="flex flex-col ml-2">
