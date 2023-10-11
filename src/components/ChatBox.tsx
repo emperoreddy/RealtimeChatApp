@@ -44,6 +44,8 @@ const ChatBox = () => {
     }
   }
 
+  messages.sort((a, b) => a.id - b.id);
+
   return (
     <div className="flex flex-col h-full mt-10 overflow-y-auto scrollbar  px-4 border border-none rounded">
       <ul className="p-4 flex flex-col ">

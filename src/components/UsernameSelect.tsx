@@ -19,10 +19,11 @@ const handleSubmit = (e) => {
 }
 
 
+
   return (
     <>
       <div className="flex  min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 text-gray-100">
-        <div className="bg-gray-800 bg-opacity-40 py-10 lg:mx-96 md:mx-36 rounded-lg">
+        <div className="bg-gray-800 bg-opacity-40 py-10 lg:mx-96 md:mx-36 rounded-lg outline outline-gray-800 shadow-2xl">
           <div className=" sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto h-10 w-auto"
@@ -59,7 +60,7 @@ const handleSubmit = (e) => {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full transition justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   onClick={handleSubmit}
                 >
                   Confirm
