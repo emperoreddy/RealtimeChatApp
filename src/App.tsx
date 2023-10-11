@@ -1,5 +1,5 @@
 import ChatLayout from "./components/ChatLayout";
-import background from "./assets/blob1.jpg";
+import background from "./assets/background.webp";
 import "./App.css";
 import UsernameSelect from "./components/UsernameSelect";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -30,7 +30,7 @@ function App() {
   return (
     <div
       className="bg-blue-800  w-screen h-screen flex items-center justify-center bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${background})` }}
+      style={{ backgroundImage: `url(${background})`, }}
     >
       <RouterProvider router={router} />
     </div>
