@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { createClient } from "@supabase/supabase-js";
 import NotFound from "./components/NotFound";
+import Authentication from "./components/Authentication";
 
 export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 export const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -14,7 +15,7 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <UsernameSelect />,
+    element: <Authentication/>,
   },
   {
     path: "/chat",
