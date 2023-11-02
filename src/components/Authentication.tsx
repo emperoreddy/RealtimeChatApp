@@ -6,11 +6,23 @@ import { useNavigate } from "react-router-dom";
 
 export default function Authentication() {
   let navigate = useNavigate();
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        navigate("/chat");
+      }
+      setSession(session);
+    });
+
     supabase.auth.onAuthStateChange((event) => {
       if (event == "SIGNED_IN") {
         navigate("/chat");
+      } else if (event == "SIGNED_OUT") {
+        navigate("/");
+      } else {
+        console.log("Something went wrong");
       }
     });
   });

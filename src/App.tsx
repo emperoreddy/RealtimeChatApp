@@ -22,6 +22,10 @@ const router = createBrowserRouter([
     element: <ChatLayout />,
   },
   {
+    path: "/select-username",
+    element: <UsernameSelect />,
+  },
+  {
     path: "*",
     element: <NotFound/>,
   }
