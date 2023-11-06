@@ -3,18 +3,21 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "../App";
 import { useNavigate } from "react-router-dom";
+import fetchUser from "../features/username/fetchUserData";
 
 export default function Authentication() {
+  const [userEmail, setUserEmail] = useState<string | undefined>();
   let navigate = useNavigate();
-  const [session, setSession] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         navigate("/chat");
       }
-      setSession(session);
     });
+
+// FETCH DATA AND STORE IN USESTATE 
+
 
     supabase.auth.onAuthStateChange((event) => {
       if (event == "SIGNED_IN") {
@@ -37,7 +40,7 @@ export default function Authentication() {
             alt="demo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
-            Select a username
+            Login / Sign Up
           </h2>
         </div>
 

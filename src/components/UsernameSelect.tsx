@@ -10,7 +10,7 @@ const [username, setUsername] = useState('');
 const dispatch =  useDispatch();
 let navigate = useNavigate();
 
-const handleSubmit = (e) => {
+const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!username) return;
     dispatch(storeUsername(username));

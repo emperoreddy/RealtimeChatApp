@@ -29,11 +29,15 @@ const router = createBrowserRouter([
         element: <Authentication />,
       },
       {
+        path: "/login",
+        element: <Authentication />,
+      },
+      {
         path: "/chat",
         element: <ChatLayout />,
       },
       {
-        path: "/select-username",
+        path: "/username",
         element: <UsernameSelect />,
       },
       {
