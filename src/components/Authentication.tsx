@@ -8,21 +8,21 @@ import { storeUserEmail } from "../features/email/storeUserEmail";
 export default function Authentication() {
   let navigate = useNavigate();
 
+  supabase.auth.onAuthStateChange((event) => {
+    if (event == "SIGNED_IN") {
+      navigate("/username");
+    } else if (event == "SIGNED_OUT") {
+      navigate("/");
+    } else {
+      console.log("Something went wrong");
+    }
+  });
+
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (session) {
         storeUserEmail();
         navigate("/chat");
-      }
-    });
-
-    supabase.auth.onAuthStateChange((event) => {
-      if (event == "SIGNED_IN") {
-        navigate("/username");
-      } else if (event == "SIGNED_OUT") {
-        navigate("/");
-      } else {
-        console.log("Something went wrong");
       }
     });
   }, []);
