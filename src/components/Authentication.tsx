@@ -4,20 +4,34 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "../App";
 import { useNavigate } from "react-router-dom";
 import fetchUser from "../features/username/fetchUserData";
+import { insertEmail } from "../features/username/insertEmail";
+import emailExistsInUsers from "../features/email/emailExistsInUsers";
 
 export default function Authentication() {
-  const [userEmail, setUserEmail] = useState<string | undefined>();
   let navigate = useNavigate();
 
+  const storeUserEmail = async () => {
+    try {
+      const user = await fetchUser();
+      const userEmail = user?.email;
+
+      if (userEmail && !(await emailExistsInUsers(userEmail))) {
+        await insertEmail(userEmail);
+        console.log(userEmail);
+        console.log("successfully inserted email");
+      }
+    } catch (error) {
+      console.error("Failed to store user email:", error);
+    }
+  };
+
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (session) {
+        storeUserEmail();
         navigate("/chat");
       }
     });
-
-// FETCH DATA AND STORE IN USESTATE 
-
 
     supabase.auth.onAuthStateChange((event) => {
       if (event == "SIGNED_IN") {
@@ -28,7 +42,7 @@ export default function Authentication() {
         console.log("Something went wrong");
       }
     });
-  });
+  }, []);
 
   return (
     <div className="flex  min-h-full flex-1  flex-col justify-center px-6 py-12 lg:px-8 text-gray-100">
