@@ -4,6 +4,7 @@ import "./App.css";
 import UsernameSelect from "./components/UsernameSelect";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import {ToastContainer} from "react-toastify";
 
 import { createClient } from "@supabase/supabase-js";
 import NotFound from "./components/NotFound";
@@ -50,11 +51,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
+
     <div
       className="bg-blue-800  w-screen h-screen flex items-center justify-center bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${background})` }}
     >
       <RouterProvider router={router} />
+      <ToastContainer/>
     </div>
   );
 }

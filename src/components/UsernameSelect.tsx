@@ -4,25 +4,54 @@ import { storeUsername } from "../features/username/storeUsernameSlice";
 import { useNavigate } from "react-router-dom";
 import storeUsernameInTable from "../features/username/storeUsernameInTable";
 import fetchUser from "../features/user/fetchUserData";
+import usernameExists from "../features/username/usernameExists";
+import {ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UsernameSelect() {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const handleSubmit = (e: any) => {
+  async function handleSubmit(e: any) {
     e.preventDefault();
 
     if (!username) return;
     dispatch(storeUsername(username));
     localStorage.setItem("username", username);
 
+    // if user is already in table, show error
+    if (await usernameExists(username)) {
+      toast.error(" Username already exists, choose another one", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    } else {
+      toast.success(" Username saved successfully", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
+    }
+
     // store in database table "users"
     storeUsernameInTable(username);
 
     navigate("/chat");
     console.log("Username submitted:", username);
-  };
+  }
 
   return (
     <>

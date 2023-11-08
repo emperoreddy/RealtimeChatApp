@@ -9,7 +9,6 @@ async function storeUsernameInTable(username: string) {
     .from("users")
     .update({ username: username, email: userEmail })
     .eq("email", userEmail);
-    
 
   if (error) {
     console.error("Error storing username:", error);
