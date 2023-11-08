@@ -8,10 +8,9 @@ import { storeUserEmail } from "../features/email/storeUserEmail";
 export default function Authentication() {
   let navigate = useNavigate();
 
-
   supabase.auth.onAuthStateChange(async (event) => {
     if (event == "SIGNED_IN") {
-    console.log('singed un');
+      navigate("/chat");
     } else if (event == "SIGNED_OUT") {
       navigate("/");
     } else {
