@@ -1,25 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { storeUsername} from "../features/username/storeUsernameSlice"
-import { useNavigate} from "react-router-dom";
-
+import { storeUsername } from "../features/username/storeUsernameSlice";
+import { useNavigate } from "react-router-dom";
+import storeUsernameInTable from "../features/username/storeUsernameInTable";
+import fetchUser from "../features/user/fetchUserData";
+import usernameExists from "../features/username/usernameExists";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UsernameSelect() {
+  const [username, setUsername] = useState("");
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
-const [username, setUsername] = useState('');
-const dispatch =  useDispatch();
-let navigate = useNavigate();
-
-const handleSubmit = (e) => {
+  async function handleSubmit(e: any) {
     e.preventDefault();
+
     if (!username) return;
     dispatch(storeUsername(username));
     localStorage.setItem("username", username);
-    navigate("/chat")
+
+    // if user is already in table, show error
+    if (await usernameExists(username)) {
+      toast.error(" Username already exists, choose another one", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    } else {
+      toast.success(" Username saved successfully", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+
+    // store in database table "users"
+    storeUsernameInTable(username);
+
+    navigate("/chat");
     console.log("Username submitted:", username);
-}
-
-
+  }
 
   return (
     <>
@@ -29,7 +61,7 @@ const handleSubmit = (e) => {
             <img
               className="mx-auto h-10 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt="demo"
+              alt="logo"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
               Select a username
@@ -37,7 +69,12 @@ const handleSubmit = (e) => {
           </div>
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" onSubmit={handleSubmit} action="/chat" method="GET">
+            <form
+              className="space-y-6"
+              onSubmit={handleSubmit}
+              action="/chat"
+              method="GET"
+            >
               <div>
                 <label
                   htmlFor="username"
