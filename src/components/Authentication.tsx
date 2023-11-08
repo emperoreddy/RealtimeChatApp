@@ -3,27 +3,10 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "../App";
 import { useNavigate } from "react-router-dom";
-import fetchUser from "../features/username/fetchUserData";
-import { insertEmail } from "../features/username/insertEmail";
-import emailExistsInUsers from "../features/email/emailExistsInUsers";
+import { storeUserEmail } from "../features/email/storeUserEmail";
 
 export default function Authentication() {
   let navigate = useNavigate();
-
-  const storeUserEmail = async () => {
-    try {
-      const user = await fetchUser();
-      const userEmail = user?.email;
-
-      if (userEmail && !(await emailExistsInUsers(userEmail))) {
-        await insertEmail(userEmail);
-        console.log(userEmail);
-        console.log("successfully inserted email");
-      }
-    } catch (error) {
-      console.error("Failed to store user email:", error);
-    }
-  };
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {

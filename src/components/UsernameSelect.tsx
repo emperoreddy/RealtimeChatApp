@@ -1,25 +1,28 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { storeUsername} from "../features/username/storeUsernameSlice"
-import { useNavigate} from "react-router-dom";
-
+import { storeUsername } from "../features/username/storeUsernameSlice";
+import { useNavigate } from "react-router-dom";
+import storeUsernameInTable from "../features/username/storeUsernameInTable";
+import fetchUser from "../features/user/fetchUserData";
 
 export default function UsernameSelect() {
+  const [username, setUsername] = useState("");
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
-const [username, setUsername] = useState('');
-const dispatch =  useDispatch();
-let navigate = useNavigate();
-
-const handleSubmit = (e: any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
+
     if (!username) return;
     dispatch(storeUsername(username));
     localStorage.setItem("username", username);
-    navigate("/chat")
+
+    // store in database table "users"
+    storeUsernameInTable(username);
+
+    navigate("/chat");
     console.log("Username submitted:", username);
-}
-
-
+  };
 
   return (
     <>
@@ -29,7 +32,7 @@ const handleSubmit = (e: any) => {
             <img
               className="mx-auto h-10 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt="demo"
+              alt="logo"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
               Select a username
@@ -37,7 +40,12 @@ const handleSubmit = (e: any) => {
           </div>
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" onSubmit={handleSubmit} action="/chat" method="GET">
+            <form
+              className="space-y-6"
+              onSubmit={handleSubmit}
+              action="/chat"
+              method="GET"
+            >
               <div>
                 <label
                   htmlFor="username"
