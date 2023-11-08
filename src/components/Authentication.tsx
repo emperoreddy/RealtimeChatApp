@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "../App";
@@ -8,9 +8,10 @@ import { storeUserEmail } from "../features/email/storeUserEmail";
 export default function Authentication() {
   let navigate = useNavigate();
 
-  supabase.auth.onAuthStateChange((event) => {
+
+  supabase.auth.onAuthStateChange(async (event) => {
     if (event == "SIGNED_IN") {
-      navigate("/username");
+    console.log('singed un');
     } else if (event == "SIGNED_OUT") {
       navigate("/");
     } else {
@@ -19,7 +20,7 @@ export default function Authentication() {
   });
 
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         storeUserEmail();
         navigate("/chat");
