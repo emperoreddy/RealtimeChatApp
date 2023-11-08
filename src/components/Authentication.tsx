@@ -18,7 +18,7 @@ export default function Authentication() {
 
     supabase.auth.onAuthStateChange((event) => {
       if (event == "SIGNED_IN") {
-        navigate("/chat");
+        navigate("/username");
       } else if (event == "SIGNED_OUT") {
         navigate("/");
       } else {

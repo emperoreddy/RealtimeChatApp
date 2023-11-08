@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { storeUsername } from "../features/username/storeUsernameSlice";
 import { useNavigate } from "react-router-dom";
 import storeUsernameInTable from "../features/username/storeUsernameInTable";
 import fetchUser from "../features/user/fetchUserData";
 import usernameExists from "../features/username/usernameExists";
-import {ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function UsernameSelect() {
@@ -43,7 +43,7 @@ export default function UsernameSelect() {
         draggable: true,
         progress: undefined,
         theme: "dark",
-      })
+      });
     }
 
     // store in database table "users"
