@@ -29,7 +29,7 @@ export default function Authentication() {
 
   return (
     <div className="flex  min-h-full flex-1  flex-col justify-center px-6 py-12 lg:px-8 text-gray-100">
-      <div className="bg-gray-800 bg-opacity-50 px-36 py-10 lg:mx-96 md:mx-36 rounded-lg outline outline-gray-800 shadow-2xl">
+      <div className="bg-gray-800 bg-opacity-30 px-10 md:px-36 py-10 lg:mx-96 md:mx-36 rounded-lg outline outline-gray-800 shadow-2xl">
         <div className=" sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
