@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, text, linkTo }) => {
         return (
             <Link
                 to={linkTo}
-                className="bg-blue-600 hover:bg-blue-800 text-white font-medium py-2 px-4 rounded"
+                className="bg-blue-600 hover:bg-blue-800 text-white font-medium py-1 px-3 rounded"
             >
                 {text}
             </Link>
@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, text, linkTo }) => {
 
     return (
         <button
-            className="bg-red-600 hover:bg-red-800 text-white font-medium py-2 px-4 rounded"
+            className="bg-red-600 hover:bg-red-800 text-white font-medium py-1 px-3 rounded"
             onClick={onClick}
         >
             {text}
@@ -39,7 +39,7 @@ const SignOutButton: React.FC = () => {
 };
 
 const ChooseUsernameButton: React.FC = () => {
-    return <Button text="Choose Username" linkTo="/username" />;
+    return <Button text="Change name" linkTo="/username" />;
 };
 
 export default SignOutButton;

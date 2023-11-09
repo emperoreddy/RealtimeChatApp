@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase, supabaseKey, supabaseUrl } from "../App";
 import { useSelector } from "react-redux";
 import { selectUsername } from "../features/username/storeUsernameSlice";
+import { BiSolidSend } from "react-icons/bi";
 
 const TypingBox = () => {
   const [message, setMessage] = useState([]);
@@ -50,9 +51,9 @@ const TypingBox = () => {
       <button
         type="submit"
         onClick={handleSendMessage}
-        className="ml-2 px-2 text-sm sm:text-base  sm:px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none"
+        className="ml-2 px-2 text-sm sm:text-base  sm:px-3 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none"
       >
-        Send
+        <BiSolidSend/>
       </button>
     </div>
   );
