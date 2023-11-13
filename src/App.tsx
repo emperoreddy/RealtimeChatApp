@@ -13,6 +13,7 @@ import Authentication from "./components/Authentication";
 export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 export const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 export const supabase = createClient(supabaseUrl, supabaseKey);
+  export const messages_table = import.meta.env.VITE_MESSAGES_TABLE;
 
 const ErrorBoundaryLayout = () => (
   <ErrorBoundary fallback={<div className="text-3xl text-white">Something went wrong 🥲</div>}>

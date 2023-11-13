@@ -3,6 +3,7 @@ import { supabase, supabaseKey, supabaseUrl } from "../App";
 import { useSelector } from "react-redux";
 import { selectUsername } from "../features/username/storeUsernameSlice";
 import { BiSolidSend } from "react-icons/bi";
+import { messages_table } from "../App";
 
 const TypingBox = () => {
   const [message, setMessage] = useState([]);
@@ -21,7 +22,7 @@ const TypingBox = () => {
 
     try {
       await supabase
-        .from("messages")
+        .from(messages_table)
         .insert([{ text: message, username: storedUsername }])
         .select();
 
